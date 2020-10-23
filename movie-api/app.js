@@ -7,11 +7,12 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const movieRouter = require('./routes/movie');
+const directorRouter = require('./routes/director');
 
 const app = express();
 
 //database connection
-mongoose.connect('mongodb://localhost/Movie-API');
+mongoose.connect('mongodb://localhost/Movie-API', { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('open', ()=>{
   console.log('Movie-API Veritabanına Bağlanıldı.');
 });
@@ -31,7 +32,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/movie', movieRouter);
+app.use('/api/movies', movieRouter);
+app.use('/api/directors', directorRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
@@ -46,7 +48,7 @@ app.use((err, req, res, next) =>{
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({err: {message: err.message, code: err.code}});
 });
 
 module.exports = app;
