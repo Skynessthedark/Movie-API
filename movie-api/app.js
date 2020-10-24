@@ -19,6 +19,7 @@ mongoose.connection.on('open', ()=>{
 mongoose.connection.on('error', ()=>{
   console.log('Veritabanı hatası. Bağlanılamadı.');
 });
+mongoose.set('useFindAndModify', false);
 mongoose.Promise = global.Promise;
 
 // view engine setup

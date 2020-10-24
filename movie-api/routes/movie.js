@@ -6,7 +6,19 @@ const Movie = require('../models/Movie');
 
 //List all movies
 router.get('/', (req, res)=>{
-  const promise = Movie.find({});
+  const promise = Movie.aggregate([
+    {
+      $lookup: {
+        from: 'directors',
+        localField: 'director_id',
+        foreignField: '_id',
+        as: 'director'
+      }
+    },
+    {
+      $unwind: '$director'
+    }
+  ]);
   promise.then((data)=>{
     res.json(data);
   }).catch((err)=>{
@@ -25,7 +37,7 @@ router.get('/top10', (req, res)=>{
 })
 
 //Get a specific movie by id
-router.get('/get/:movie_id', (req, res, next) => {
+router.get('/:movie_id', (req, res, next) => {
   const movie_id = req.params.movie_id;
 	const promise = Movie.findById(movie_id);
 

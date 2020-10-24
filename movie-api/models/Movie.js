@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const movieSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: [true, '{PATH} alanını girmek zorunludur.'],
+        maxlength: 120,
+        minlength: 1
     },
     category: String,
     country: String,
