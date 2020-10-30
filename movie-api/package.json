@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "start:dev": "nodemon ./bin/www",
     "test": "./node_modules/.bin/mocha './test/**/*.spec.js' --exit --recursive"
   },
   "dependencies": {
