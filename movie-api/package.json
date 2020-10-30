@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha test/**/*.test.js --exit --recursive"
+    "test": "./node_modules/.bin/mocha './test/**/*.spec.js' --exit --recursive"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,6 +14,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.2.0",
     "mongoose": "^5.10.9",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.6",
@@ -21,7 +22,6 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "mocha": "^8.2.0"
+    "chai-http": "^4.3.0"
   }
 }

@@ -85,7 +85,7 @@ router.put('/:movie_id', (req, res)=>{
 router.delete('/:id', (req, res)=>{
   const promise = Movie.findByIdAndRemove(req.params.id);
   promise.then((data)=>{
-    res.json(data);
+    res.json({status: 1});
   }).catch((err)=>{
     res.json(err);
   });
