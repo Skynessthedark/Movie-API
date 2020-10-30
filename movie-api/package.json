@@ -7,6 +7,9 @@
     "start:dev": "nodemon ./bin/www",
     "test": "./node_modules/.bin/mocha './test/**/*.spec.js' --exit --recursive"
   },
+  "engines": {
+    "node":  "10.19.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
